@@ -3,7 +3,7 @@ import CardGenerator from "./CardGenerator";
 
 const RecipeContainer = ({recipeArr}) => {
     return (
-        <div className='container d-flex justify-content-center flex-wrap'>
+        <div >
             <CardGenerator recipeArr={recipeArr} />
         </div>
     )

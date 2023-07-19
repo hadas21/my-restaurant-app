@@ -1,11 +1,14 @@
 import React from "react";
 
-export function ActiveIngredient() {
+export function ActiveIngredients(props) {
     return (
-        <div className='container actIngredient border-bottom border-dark border-3 mt-5'>
-            <h2>Active Ingredients</h2>
-            <ul>
-            </ul>
-        </div>
-    )
+			<div>
+				<h2>Active Ingredients</h2>
+				<ul>
+					{props.activeIngredients.map((item) => {
+						return <li key={item}>{item}</li>
+					})}
+				</ul>
+			</div>
+		)
 }

@@ -1,10 +1,4 @@
-body {
-  background: url("https://www.foodandwine.com/thmb/OSY58Hg4kyajs7p9ZG2afqkfo9U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-recipes-cucumber-salad-ingredients-738cf8298a4c4a24adf253124078a708.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 
-}
 
 .ingredientList, .disIngredient, .actIngredient {
   width: 1000px

@@ -1,8 +1,8 @@
 import React from "react";
 
-export function DiscardedIngredientsList() {
+export function DiscardedIngredients() {
     return (
-			<div className='container disIngredient border-bottom border-dark border-3 mt-5'>
+			<div>
 				<h2>Discarded Ingredients</h2>
 				<div>
 					<ul></ul>

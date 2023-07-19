@@ -8,8 +8,8 @@ const CardGenerator = ({ recipeArr }) => {
 				return (
 					<div
 						key={index}
-						className={`card ${recipeObj.name} recipeCard mx-3 my-3`}>
-						<h2 className='card-header' key={`name${index}`}>
+						>
+						<h2  key={`name${index}`}>
 							{recipeObj.name}
 						</h2>
 						<CardListGenerator
