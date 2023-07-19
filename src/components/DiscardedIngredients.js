@@ -1,12 +1,19 @@
-import React from "react";
+import React from 'react'
 
-export function DiscardedIngredients() {
-    return (
-			<div>
-				<h2>Discarded Ingredients</h2>
-				<div>
-					<ul></ul>
-				</div>
-			</div>
-		)
+export function DiscardedIngredients(props) {
+	return (
+		<div>
+			<h2>Discarded Ingredients</h2>
+			{props.discardedIngredients.map((item) => {
+				return (
+					<div key={item}>
+						{item}
+						<button value={item} onClick={props.restoreIngredient}>
+							+
+						</button>
+					</div>
+				)
+			})}
+		</div>
+	)
 }
