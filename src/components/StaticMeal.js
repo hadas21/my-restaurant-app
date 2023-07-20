@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { recipeArr } from '../assets/recipesData'
 import RecipeContainer from './RecipeContainer'
 import AllIngredientList from './AllIngredient'
-import { getAllIngredients, getActiveRecipes } from '../utils'
+import { getAllIngredients, getActiveRecipes, getActiveIngredients } from '../utils'
 
 const StaticMeal = () => {
 	const [activeIngredients, setActiveIngredients] = useState(
@@ -14,18 +14,17 @@ const StaticMeal = () => {
 	function removeIngredient(event) {
 		const item = event.target.value
 
-        const updatedActiveMeals = getActiveRecipes(activeIngredients, recipeArr)
+        const updatedActiveIngredients = getActiveIngredients(
+					activeIngredients,
+					item
+				);
+        const updatedActiveMeals = getActiveRecipes(
+					updatedActiveIngredients,
+					recipeArr
+				)
         console.log(updatedActiveMeals)
 
-		setActiveIngredients((prev) => {
-			return prev.filter((el) => {
-				if (el === item) {
-					return false
-				} else {
-					return true
-				}
-			})
-		})
+		setActiveIngredients(updatedActiveIngredients)
 
 		setDiscardedIngredients((prev) => {
 			return [...prev, item]

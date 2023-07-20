@@ -21,7 +21,14 @@ export function getActiveRecipes(activeIngredients, recipeArr){
 
 				return keepRecipe
 			})
-
-   
-
 }
+
+export function getActiveIngredients (prev, item) {
+			return prev.filter((el) => {
+				if (el === item) {
+					return false
+				} else {
+					return true
+				}
+			})
+		}
