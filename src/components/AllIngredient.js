@@ -4,11 +4,13 @@ import { DiscardedIngredients } from './DiscardedIngredients'
 const AllIngredientList = (props) => {
 	return (
 		<>
-			<ActiveIngredients
+
+			<ActiveIngredients 
 				activeIngredients={props.activeIngredients}
 				removeIngredient={props.removeIngredient}
 			/>
-			<DiscardedIngredients
+			<DiscardedIngredients 
+
 				discardedIngredients={props.discardedIngredients}
 				restoreIngredient={props.restoreIngredient}
 			/>
