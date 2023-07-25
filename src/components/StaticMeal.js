@@ -14,6 +14,7 @@ const StaticMeal = () => {
 	function removeIngredient(event) {
 		const item = event.target.value
 
+<<<<<<< HEAD
         const updatedActiveIngredients = getActiveIngredients(
 					activeIngredients,
 					item
@@ -22,6 +23,10 @@ const StaticMeal = () => {
 					updatedActiveIngredients,
 					recipeArr
 				)
+=======
+
+        const updatedActiveMeals = getActiveRecipes(activeIngredients, recipeArr)
+>>>>>>> 87fa6d4db2dc88ae25f6946d34fb939f4d8aba75
         console.log(updatedActiveMeals)
 
 		setActiveIngredients(updatedActiveIngredients)
@@ -65,6 +70,7 @@ const StaticMeal = () => {
 			<RecipeContainer recipeArr={activeMeals} />
 		</>
 	)
+
 }
 
 export default StaticMeal
