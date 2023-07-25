@@ -1,13 +1,17 @@
-import {react, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getMealCatgeries, getMealByCategory, getMealDetails } from "./api";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { ActiveIngredients } from "../components/ActiveIngredients";
+import { removeIngredient, addIngredient } from '../utils'
 
 function Index() {
     const [categories, setCategories] = useState([]);
     const [activeCategory, setActiveCategory] = useState('');
     const [meals, setMeals] = useState([]);
+    
     const [ingredients, setIngredients] = useState([]);
+    const [activeIngredients, setActiveIngredients] = useState([])
 
     useEffect(() => {
         getMealCatgeries()
@@ -62,46 +66,61 @@ function Index() {
         setActiveCategory(newActiveCategory);
     }
 
+    function handleAddIngredient(e) {
+        const newActiveIngredient = e.target.value
+        // remove()
+        const updatedIngredients = removeIngredient(ingredients, newActiveIngredient)
+        setIngredients(updatedIngredients)
+        // add()
+        const updatedActiveIngredients = addIngredient(activeIngredients, newActiveIngredient)
+        setActiveIngredients(updatedActiveIngredients)
+        // filter()
+
+    }
+
     return (
-        <>
-            <h3>Select a category</h3>
-            <div>Active Category: {activeCategory}</div>
-            {
-                categories.map(category => {
-                    return (
-                        <button 
-                            key={category}
-                            onClick={(e) => handleCategorySelect(e)}
-                            value={category}
-                        >{category}</button>
-                    )
-                })
-            }
-            <br/>
-            <Row>
-                <Col>
-                    <h5>Meal Options</h5>
-                    {
-                        meals.map(meal => {
-                            return (
-                                <div key={meal}>{meal}</div>
-                            )
-                        })
-                    }
-                </Col>
-                <Col>
-                    <h5>All Ingredients</h5>
-                    {
-                        ingredients.map(ing => {
-                            return (
-                                <div key={ing}>{ing}</div>
-                            )
-                        })
-                    }
-                </Col>
-            </Row>
-        </>
-    )
+			<>
+				<h3>Select a category</h3>
+				<div>Active Category: {activeCategory}</div>
+				{categories.map((category) => {
+					return (
+						<button
+							key={category}
+							onClick={(e) => handleCategorySelect(e)}
+							value={category}>
+							{category}
+						</button>
+					)
+				})}
+				<br />
+				<Row>
+					<Col>
+						<h5>Meal Options</h5>
+						{meals.map((meal, i) => {
+							return <div key={`${meal}-${i}`}>{meal}</div>
+						})}
+					</Col>
+					<Col>
+						<h5>Active Ingredients</h5>
+						{activeIngredients.map((activeIng, i) => {
+							return <div key={`${activeIng}-${i}`}>{activeIng}</div>
+						})}
+					</Col>
+					<Col>
+						<h5>All Ingredients</h5>
+						{ingredients.map((ing, i) => {
+							return (
+								<div key={`${ing}-${i}`}>
+									<button value={ing} onClick={handleAddIngredient}>+</button>
+                                    {'  '}
+									{ ing }
+								</div>
+							)
+						})}
+					</Col>
+				</Row>
+			</>
+		)
 }
 
 export default Index;
