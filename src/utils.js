@@ -8,3 +8,20 @@ export function getAllIngredients(recipeArr) {
 		return prev
 	}, [])
 }
+
+export function getActiveRecipes(activeIngredients, recipeArr){
+     return recipeArr.filter((recipe) => {
+				let keepRecipe = true
+
+				recipe.ingredientArr.forEach((item) => {
+					if (!activeIngredients.includes(item)) {
+						keepRecipe = false
+					}
+				})
+
+				return keepRecipe
+			})
+
+   
+
+}

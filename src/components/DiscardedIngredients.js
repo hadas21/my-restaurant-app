@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react'
 
 export function DiscardedIngredients(props) {
+
     return (
 			<div>
 				<h2>Discarded Ingredients</h2>
@@ -12,3 +13,4 @@ export function DiscardedIngredients(props) {
 			</div>
 		)
 }
+
