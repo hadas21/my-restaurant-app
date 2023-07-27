@@ -1,20 +1,12 @@
-import React from 'react'
 
-export function ActiveIngredients(props) {
 
+export default function ActiveIngredients({ activeIngredients }) {
 	return (
-		<div>
-			<h2>Active Ingredients</h2>
-			{props.activeIngredients.map((item) => {
-				return (
-					<div key={item}>
-						{item}
-						<button value={item} onClick={props.removeIngredient}>
-							-
-						</button>
-					</div>
-				)
+		<>
+			<h5>Active Ingredients</h5>
+			{activeIngredients.map((activeIng, i) => {
+				return <div key={`${activeIng}-${i}`}>{activeIng}</div>
 			})}
-		</div>
+		</>
 	)
 }
