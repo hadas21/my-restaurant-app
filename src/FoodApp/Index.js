@@ -5,8 +5,9 @@ import Col from 'react-bootstrap/Col'
 import Categories from '../components/Categories'
 import ActiveIngredients from '../components/ActiveIngredients'
 import AllIngredients from '../components/AllIngredients'
-import { removeIngredient, addIngredient, checkForActiveMeals, getAllIngredients, getAllMeals } from '../utils'
+import { removeIngredient, addIngredient, checkForActiveMeals, getAllIngredients, getAllMeals, sort, getIngredientCount } from '../utils'
 import MealOptions from '../components/MealOptions'
+import IngredientScale from './IngredientScale'
 
 function Index() {
 	const [categories, setCategories] = useState([])
@@ -15,6 +16,7 @@ function Index() {
 	const [ingredients, setIngredients] = useState([])
 	const [activeIngredients, setActiveIngredients] = useState([])
 	const [activeMeals, setActiveMeals] = useState([])
+	const [ingredientCount, setIngredientCount] = useState({});
 
 	useEffect(() => {
 		getMealCatgeries().then((data) => {
@@ -36,8 +38,10 @@ function Index() {
                     
 					const ingredientArr = getAllIngredients(data)
 					const mealObj = getAllMeals(data)
-					setMeals(mealObj)
-					setIngredients(ingredientArr)
+					const ingredientCountObj = getIngredientCount(data);
+					setMeals(mealObj);
+					setIngredients(sort(ingredientArr));
+					setIngredientCount(ingredientCountObj);
 				})
 			})
 		}
@@ -78,6 +82,11 @@ function Index() {
 				handleCategorySelect={handleCategorySelect}
 			/>
 			<Row>
+				<IngredientScale
+					ingredientCount={ingredientCount}
+				/>
+			</Row>
+			<Row>
 				<Col>
 					<MealOptions meals={meals} activeMeals={activeMeals} />
 				</Col>
@@ -85,11 +94,15 @@ function Index() {
 					<ActiveIngredients activeIngredients={activeIngredients}/>
 				</Col>
 				<Col>
-					<AllIngredients ingredients={ingredients} handleAddIngredient={handleAddIngredient}  />
+					<AllIngredients 
+						ingredients={ingredients}
+						handleAddIngredient={handleAddIngredient}  
+						ingredientCount={ingredientCount}
+					/>
 				</Col>
 			</Row>
 		</>
 	)
 }
 
-export default Index
+export default Index;

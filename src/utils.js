@@ -6,12 +6,12 @@ export function getAllIngredients(data) {
 		for (let i = 1; i <= 20; i++) {
 			const keyName = `strIngredient${i}`
 			const value = c[keyName]
-			if (value !== null && value !== '' && prev.indexOf(value) === -1) {
-				prev.push(value)
+			if (value !== null && value !== '' && !prev.includes(value)) {
+				prev.push(value);
 			}
 		}
 
-		return prev
+		return prev;
 	}, [])
 }
 
@@ -80,7 +80,38 @@ export function checkForActiveMeals(activeIngredients, meals) {
 			activeMealArr.push(meal)
 		}
 	})
-	console.log(activeMealArr)
 	return activeMealArr
 	
+}
+
+export function sort(arr) {
+	return arr.sort((a, b) => {
+		if (a > b) {
+			return 1;
+		} else if (b > a) {
+			return -1;
+		} else {
+			return 0;
+		}
+	})
+}
+
+export function getIngredientCount(data) {
+	return data.reduce((prev, curr) => {
+		const c = curr.meals[0]
+
+		for (let i = 1; i <= 20; i++) {
+			const keyName = `strIngredient${i}`
+			const value = c[keyName]
+			if (value !== null && value !== '') {
+				if (prev.hasOwnProperty(value)) {
+					prev[value] += 1;
+				} else {
+					prev[value] = 1;
+				}
+			}
+		}
+
+		return prev;
+	}, {})
 }
