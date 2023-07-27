@@ -7,6 +7,7 @@ import ActiveIngredients from '../components/ActiveIngredients'
 import AllIngredients from '../components/AllIngredients'
 import { removeIngredient, addIngredient, checkForActiveMeals, getAllIngredients, getAllMeals, sort, getIngredientCount } from '../utils'
 import MealOptions from '../components/MealOptions'
+import IngredientScale from './IngredientScale'
 
 function Index() {
 	const [categories, setCategories] = useState([])
@@ -80,6 +81,11 @@ function Index() {
 				categories={categories}
 				handleCategorySelect={handleCategorySelect}
 			/>
+			<Row>
+				<IngredientScale
+					ingredientCount={ingredientCount}
+				/>
+			</Row>
 			<Row>
 				<Col>
 					<MealOptions meals={meals} activeMeals={activeMeals} />
