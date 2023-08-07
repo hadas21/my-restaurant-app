@@ -5,7 +5,7 @@ export default function AllIngredients({ ingredients, handleAddIngredient, ingre
 		const count =  ingredientCount[ing];
 		const ratio = count / maxCount;
 		return {
-			backgroundColor: 'green',
+			color: 'green',
 			filter: `brightness(${1 + ratio})`
 		}
 	}

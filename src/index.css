@@ -20,3 +20,6 @@ code {
 .non-active-meal{
   background-color: none;
 }
+button{
+  margin: 5px;
+}

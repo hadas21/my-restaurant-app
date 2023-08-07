@@ -18,7 +18,7 @@ const StaticMeal = () => {
         const updatedActiveMeals = getActiveRecipes(activeIngredients, recipeArr)
         console.log(updatedActiveMeals)
 
-		setActiveIngredients(updatedActiveIngredients)
+		// setActiveIngredients(updatedActiveIngredients)
 
 		setDiscardedIngredients((prev) => {
 			return [...prev, item]
